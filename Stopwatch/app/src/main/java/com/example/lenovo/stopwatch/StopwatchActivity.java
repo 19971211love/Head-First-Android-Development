@@ -9,9 +9,11 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class StopwatchActivity extends Activity {
-
+//  record the number of seconds passed
     private int seconds = 0;
+//  whether the stopwatch is running
     private boolean running;
+//  whether the stopwatch was running before the activity was paused
     private boolean wasRunning;
 
     @Override
@@ -27,17 +29,17 @@ public class StopwatchActivity extends Activity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume(){
+        super.onResume();
         if(wasRunning){
             running = true;
         }
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        wasRunning  = running;
+    protected void onPause(){
+        super.onPause();
+        wasRunning = running;
         running = false;
     }
 
